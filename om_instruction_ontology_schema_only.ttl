@@ -1,0 +1,140 @@
+@prefix om: <http://example.org/om-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+om:InstructionType a owl:Class ;
+    rdfs:subClassOf om:Instruction .
+
+om:InstructionalTool a owl:Class .
+
+om:MobilityActivity a owl:Class .
+
+om:OMResearchOntology a owl:Ontology .
+
+om:SensoryCue a owl:Class .
+
+om:anticipates a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:LearnerCondition .
+
+om:avoidsStrategy a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:InstructionalStrategy .
+
+om:controlsSkillDevelopment a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:InstructionalGoal .
+
+om:engagesIn a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:PracticeCondition .
+
+om:experienced a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:FeedbackType .
+
+om:experiencesCondition a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:LearnerState .
+
+om:experiencesHazard a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:Hazard .
+
+om:hasConcern a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:LearnerCondition .
+
+om:hasLearnerState a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:LearnerState .
+
+om:hasSafetyConcern a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:Environment .
+
+om:invitesToPractice a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:NonSpecialistSupporter .
+
+om:knowsCorrectTechnique a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:LearnerState .
+
+om:mentionsHazard a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:Hazard .
+
+om:modelsBehavior a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:NonSpecialistSupporter .
+
+om:occursIn a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:Environment .
+
+om:practicesSkill a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:MobilitySkill .
+
+om:prefers a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:FeedbackType .
+
+om:receivesFeedback a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:FeedbackType .
+
+om:requiresSupportIn a owl:ObjectProperty ;
+    rdfs:domain om:Learner ;
+    rdfs:range om:Environment .
+
+om:schedulesPractice a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:LearnerState .
+
+om:serves a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:Learner .
+
+om:targetsGoal a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:LearnerState .
+
+om:warnsAbout a owl:ObjectProperty ;
+    rdfs:domain om:OMSpecialist ;
+    rdfs:range om:InstructionalStrategy .
+
+om:InstructionalGoal a owl:Class .
+
+om:MobilitySkill a owl:Class .
+
+om:PracticeCondition a owl:Class .
+
+om:Hazard a owl:Class .
+
+om:InstructionalStrategy a owl:Class ;
+    rdfs:subClassOf om:Instruction .
+
+om:LearnerCondition a owl:Class .
+
+om:NonSpecialistSupporter a owl:Class ;
+    rdfs:subClassOf om:Person .
+
+om:Environment a owl:Class .
+
+om:FeedbackType a owl:Class ;
+    rdfs:subClassOf om:Instruction .
+
+om:Instruction a owl:Class .
+
+om:Person a owl:Class .
+
+om:LearnerState a owl:Class .
+
+om:OMSpecialist a owl:Class ;
+    rdfs:subClassOf om:Person .
+
+om:Learner a owl:Class ;
+    rdfs:subClassOf om:Person .
+
