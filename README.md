@@ -11,7 +11,9 @@ tools.
 ## Files
 
 - `ontology.ttl` — ontology serialized in RDF/Turtle
-- `queries/` — SPARQL competency queries used in evaluation
+- `queries/` — SPARQL competency queries used to evaluate the
+  provenance-bearing research knowledge graph. The interview-derived
+  knowledge graph is not included in this public repository.
 - `figures/` — ontology visualization
 
 ## Status
