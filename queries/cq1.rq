@@ -1,0 +1,45 @@
+PREFIX om: <http://example.org/om-ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+    ?statement
+    ?transcript
+    ?participantType
+    ?subject
+    ?relation
+    ?object
+    ?objectType
+    ?label
+    ?evidenceQuote
+    ?lineStart
+    ?lineEnd
+WHERE {
+    ?statement a rdf:Statement ;
+        rdf:subject ?subject ;
+        rdf:predicate ?relation ;
+        rdf:object ?object ;
+        om:sourceTranscript ?transcript ;
+        om:participantType ?participantType ;
+        om:evidenceQuote ?evidenceQuote ;
+        om:evidenceLineStart ?lineStart ;
+        om:evidenceLineEnd ?lineEnd .
+
+    OPTIONAL { ?object a ?objectType }
+    OPTIONAL { ?object rdfs:label ?label }
+
+    FILTER (
+        ?objectType IN (
+            om:LearnerState,
+            om:MobilityActivity,
+            om:Environment,
+            om:Hazard,
+            om:FeedbackType,
+            om:InstructionalStrategy,
+            om:LearnerCondition,
+            om:MobilitySkill,
+            om:SensoryCue,
+            om:InstructionType
+        )
+    )
+}

@@ -1,0 +1,41 @@
+PREFIX om: <http://example.org/om-ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+    ?participantType
+    ?objectType
+    ?label
+    ?object
+    (COUNT(DISTINCT ?transcript) AS ?interviewCount)
+    (COUNT(DISTINCT ?statement) AS ?evidenceCount)
+    (GROUP_CONCAT(DISTINCT ?transcript; separator=", ") AS ?transcripts)
+WHERE {
+    ?statement a rdf:Statement ;
+        rdf:subject ?subject ;
+        rdf:predicate ?relation ;
+        rdf:object ?object ;
+        om:sourceTranscript ?transcript ;
+        om:participantType ?participantType .
+
+    OPTIONAL {
+        ?object a ?objectType .
+        OPTIONAL {
+            ?object rdfs:label ?label
+        }
+    }
+
+    VALUES ?objectType {
+        om:FeedbackType
+        om:InstructionalStrategy
+        om:LearnerState
+        om:LearnerCondition
+        om:SensoryCue
+    }
+}
+GROUP BY ?participantType ?objectType ?label ?object
+HAVING (
+    COUNT(DISTINCT ?transcript) > 0
+    && COUNT(DISTINCT ?statement) > 0
+)
+ORDER BY ?participantType ?objectType ?label
